@@ -1,1 +1,1 @@
-# analysis-of-Johnston-2018-replication-study
+This repository is part of a large replication project conducted by the Sports Science Replication Centre (https://ssreplicationcentre.com/). It includes the data and analyses for the replication study of "Investigating the effects of maximal anaerobic fatigue on dynamic postural control using the Y-Balance Test" by Johnston et al (2018).
