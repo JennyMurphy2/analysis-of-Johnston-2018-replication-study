@@ -102,6 +102,7 @@ anterior_data_afx
 summary(anterior_data_afx)
 
 anterior_data_emm <- emmeans::emmeans(anterior_data_afx, ~ time, model = "multivariate")
+anterior_data_emm
 
 # Anterior post hoc contrasts ----------------------------------------------------------------------------
 
