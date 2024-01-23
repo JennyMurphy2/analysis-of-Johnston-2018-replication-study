@@ -2,12 +2,12 @@ library(pastecs)
 library(tidyverse)
 library(forcats)
 
-# Load *anterior* data --------------------------------------------------------------------
+# ANTERIOR --------------------------------------------------------------------
 
 anterior_data <- read_csv("anterior_reach_data.csv")
 head(anterior_data)
 
-## Prepare anterior data -------------------------------------------------------------------
+## Prepare anterior data 
 # Convert data to long dataset and add intervention column
 # Drop the "pre01" and "pre03" observation - original study only compared pre03 to post scores
 
@@ -37,7 +37,7 @@ descriptives_anterior_data <- anova_anterior_data %>%
 
 ## Anterior plot ------------------------------------------------------
 
-### Line graph ------------------------------------------------------
+### Line graph
 
 ant_plot <- descriptives_anterior_data %>%
   select(-c("intervention")) %>%
@@ -62,12 +62,12 @@ ggsave("ant_linegraph.png",
        limitsize = TRUE
 )
 
-# Load *postmed* data --------------------------------------------------------------------
+# POSTEROMEDIAL --------------------------------------------------------------------
 
 posteromed_data <- read_csv("postmed_reach_data.csv")
 head(posteromed_data)
 
-## Prepare posteromed data -------------------------------------------------------------------
+## Prepare posteromed data 
 # Convert data to long dataset and add intervention column
 # Drop the "pre01" and "pre03" observation - original study only compared pre03 to post scores
 
@@ -97,7 +97,7 @@ descriptives_posteromed_data <- anova_posteromed_data %>%
 
 ## Posteromedial plot ------------------------------------------------------
 
-### Line graph ------------------------------------------------------
+### Line graph 
 
 postmed_plot <- descriptives_posteromed_data %>%
   select(-c("intervention")) %>%
@@ -122,12 +122,12 @@ ggsave("postmed_linegraph.png",
        limitsize = TRUE
 )
 
-# Load *postlat* data --------------------------------------------------------------------
+# POSTEROLATERAL --------------------------------------------------------------------
 
 posterolat_data <- read_csv("postlat_reach_data.csv")
 head(posterolat_data)
 
-## Prepare posterolateral data -------------------------------------------------------------------
+## Prepare posterolateral data 
 # Convert data to long dataset and add intervention column
 # Drop the "pre01" and "pre03" observation - original study only compared pre03 to post scores
 
@@ -157,7 +157,7 @@ descriptives_posterolat_data <- anova_posterolat_data %>%
 
 ## Posterolateral plot ------------------------------------------------------
 
-### Line graph ------------------------------------------------------
+### Line graph
 
 postlat_plot <- descriptives_posterolat_data %>%
   select(-c("intervention")) %>%
