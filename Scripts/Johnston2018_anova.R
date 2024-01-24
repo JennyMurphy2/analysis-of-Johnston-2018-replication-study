@@ -6,6 +6,7 @@ library(reshape2)
 library(tidyverse)
 library(MOTE)
 library(TOSTER)
+library(rstatix)
 
 # ANTERIOR DATA --------------------------------------------------------------------
 
@@ -115,6 +116,11 @@ anova_anterior_data %>%
   dplyr::group_by(time) %>% 
   rstatix::shapiro_test(score)
 
+### Outliers check 
+
+anova_anterior_data %>%
+  group_by(time) %>%
+  identify_outliers(score)
 
 # POSTEROMEDIAL --------------------------------------------------------------------
 
@@ -214,6 +220,13 @@ anova_posteromed_data %>%
   dplyr::group_by(time) %>% 
   rstatix::shapiro_test(score)
 
+
+### Outliers check 
+
+anova_posteromed_data %>%
+  group_by(time) %>%
+  identify_outliers(score)
+
 # POSTEROLATERAL --------------------------------------------------------------------
 
 posterolat_data <- read_csv("postlat_reach_data.csv")
@@ -310,6 +323,12 @@ anova_posterolat_data %>%
   dplyr::group_by(time) %>% 
   rstatix::shapiro_test(score)
 
+### Outliers check 
+
+anova_posterolat_data %>%
+  group_by(time) %>%
+  identify_outliers(score)
+
 
 # ANTERIOR EFFECT SIZE --------
 
@@ -330,6 +349,7 @@ ant_pes_ori <- eta.F(dfm=3, dfe=19, Fvalue=3.818, a = 0.05) %>%
   as.data.frame() %>%
   select(eta, etalow, etahigh) %>% 
   mutate(study_id = "Original study")
+ant_pes_ori
 
 # Z-TEST ------
 
@@ -387,8 +407,8 @@ postlat_pes_ori
 # Forest plot effect sizes ---------
 
 ## Labels for anterior reach direction effect sizes forest plot 
-label_rep <- "0.148 [0.02, 0.32]"
-label_ori <- "0.376 [0.00, 0.62]"
+label_rep <- "0.159 [0.025, 0.320]"
+label_ori <- "0.376 [0.000, 0.619]"
 
 ## Join rep_datasets 
 plot <-
