@@ -362,7 +362,8 @@ rho_rep = 2*sqrt(pes_rep)-1
 rep_test <- compare_cor(r1 = rho_ori,
                         df1 = 19,
                         r2 = rho_rep,
-                        df2 = 60.75)
+                        df2 = 60.75,
+                        alternative = "less")
 rep_test
 
 # POSTEROMEDIAL EFFECT SIZE --------
