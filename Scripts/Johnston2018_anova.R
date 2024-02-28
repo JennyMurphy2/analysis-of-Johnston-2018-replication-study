@@ -359,11 +359,11 @@ pes_rep = ant_pes_rep$eta
 rho_ori = 2*sqrt(pes_ori)-1
 rho_rep = 2*sqrt(pes_rep)-1
 
-rep_test <- compare_cor(r1 = rho_ori,
-                        df1 = 19,
-                        r2 = rho_rep,
-                        df2 = 60.75,
-                        alternative = "less")
+rep_test = TOSTER::compare_cor(r1 = rho_ori,
+                               df1 = 19,
+                               r2 = rho_rep,
+                               df2 = 60.75,
+                               alternative = "greater")
 rep_test
 
 # POSTEROMEDIAL EFFECT SIZE --------
