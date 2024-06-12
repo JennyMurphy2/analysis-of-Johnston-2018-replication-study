@@ -9,13 +9,11 @@ head(anterior_data)
 
 ## Prepare anterior data 
 # Convert data to long dataset and add intervention column
-# Drop the "pre01" and "pre03" observation - original study only compared pre03 to post scores
 
 anova_anterior_data <- anterior_data  %>%
-  select(-c("pre01", "pre02")) %>%
-  gather(key = "time", value = "score", pre03, post01, post02, post03) %>%
+  gather(key = "time", value = "score", pre01, pre02, pre03, post01, post02, post03) %>%
   mutate(intervention =  case_when(
-    time %in% c("pre03") ~ "pre_fatigue",
+    time %in% c("pre01", "pre02", "pre03") ~ "pre_fatigue",
     time %in% c("post01", "post02", "post03") ~ "post_fatigue"
   ))
 head(anova_anterior_data, 3)
@@ -41,7 +39,7 @@ descriptives_anterior_data <- anova_anterior_data %>%
 
 ant_plot <- descriptives_anterior_data %>%
   select(-c("intervention")) %>%
-  mutate(time = fct_relevel(time, c("pre03", "post01", "post02", "post03"))) %>%
+  mutate(time = fct_relevel(time, c("pre01", "pre02", "pre03", "post01", "post02", "post03"))) %>%
   ggplot(aes(x= time, y= mean)) + 
   geom_line(group = 1) + 
   geom_point() + 
@@ -69,13 +67,11 @@ head(posteromed_data)
 
 ## Prepare posteromed data 
 # Convert data to long dataset and add intervention column
-# Drop the "pre01" and "pre03" observation - original study only compared pre03 to post scores
 
 anova_posteromed_data <- posteromed_data  %>%
-  select(-c("pre01", "pre02")) %>%
-  gather(key = "time", value = "score", pre03, post01, post02, post03) %>%
+  gather(key = "time", value = "score", pre01, pre02, pre03, post01, post02, post03) %>%
   mutate(intervention =  case_when(
-    time %in% c("pre03") ~ "pre_fatigue",
+    time %in% c("pre01", "pre02", "pre03") ~ "pre_fatigue",
     time %in% c("post01", "post02", "post03") ~ "post_fatigue"
   ))
 head(anova_posteromed_data, 3)
@@ -101,7 +97,7 @@ descriptives_posteromed_data <- anova_posteromed_data %>%
 
 postmed_plot <- descriptives_posteromed_data %>%
   select(-c("intervention")) %>%
-  mutate(time = fct_relevel(time, c("pre03", "post01", "post02", "post03"))) %>%
+  mutate(time = fct_relevel(time, c("pre01","pre02", "pre03", "post01", "post02", "post03"))) %>%
   ggplot(aes(x= time, y= mean)) + 
   geom_line(group = 1) + 
   geom_point() + 
@@ -129,13 +125,11 @@ head(posterolat_data)
 
 ## Prepare posterolateral data 
 # Convert data to long dataset and add intervention column
-# Drop the "pre01" and "pre03" observation - original study only compared pre03 to post scores
 
 anova_posterolat_data <- posterolat_data  %>%
-  select(-c("pre01", "pre02")) %>%
-  gather(key = "time", value = "score", pre03, post01, post02, post03) %>%
+  gather(key = "time", value = "score", pre01, pre02,pre03, post01, post02, post03) %>%
   mutate(intervention =  case_when(
-    time %in% c("pre03") ~ "pre_fatigue",
+    time %in% c("pre01", "pre02", "pre03") ~ "pre_fatigue",
     time %in% c("post01", "post02", "post03") ~ "post_fatigue"
   ))
 head(anova_posterolat_data, 3)
@@ -161,7 +155,7 @@ descriptives_posterolat_data <- anova_posterolat_data %>%
 
 postlat_plot <- descriptives_posterolat_data %>%
   select(-c("intervention")) %>%
-  mutate(time = fct_relevel(time, c("pre03", "post01", "post02", "post03"))) %>%
+  mutate(time = fct_relevel(time, c("pre01", "pre02", "pre03", "post01", "post02", "post03"))) %>%
   ggplot(aes(x= time, y= mean)) + 
   geom_line(group = 1) + 
   geom_point() + 
