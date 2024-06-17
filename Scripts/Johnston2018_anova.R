@@ -8,6 +8,8 @@ library(MOTE)
 library(TOSTER)
 library(rstatix)
 
+set.seed(21)
+
 # ANTERIOR DATA --------------------------------------------------------------------
 
 anterior_data <- read_csv("anterior_reach_data.csv")
@@ -362,7 +364,7 @@ rho_rep = 2*sqrt(pes_rep)-1
 rep_test = TOSTER::compare_cor(r1 = rho_ori,
                                df1 = 19,
                                r2 = rho_rep,
-                               df2 = 60.75,
+                               df2 = 69.03,
                                alternative = "greater")
 rep_test
 
